@@ -37,6 +37,7 @@ frr_bgp: {}
   # route_map: BGP_IN
   # asns:
   #   65000:
+  #     vrf: vrf-example
   #     log_neighbor_changes: true
   #     timers: '3 9'
   #     maximum_paths: 64
