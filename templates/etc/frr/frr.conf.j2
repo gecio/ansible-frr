@@ -78,7 +78,11 @@ ipv6 nht resolve-via-default
 {% if frr_daemons['bgpd'] %}
 {%   if frr_bgp is defined and frr_bgp != {} %}
 {%     for asn, asn_data in frr_bgp['asns'].items() %}
+{%     if asn_data['vrf'] is defined %}
+router bgp {{ asn }} vrf {{ asn_data['vrf'] }}
+{%     else %}
 router bgp {{ asn }}
+{%     endif %}
 {%       if frr_router_id is defined %}
   bgp router-id {{ frr_router_id }}
 {%       endif %}
